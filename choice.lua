@@ -3,10 +3,10 @@ local class = require("libs.middleclass")
 ---@class Choice
 local Choice = class("Choice")
 
-function Choice:initialize()
-    self.description = nil ---@type string
-    self.destination = nil ---@type string
-    self.condition = nil
+function Choice:initialize(destination, description, condition)
+    self.description = description ---@type string
+    self.destination = destination ---@type string
+    self.condition = condition
 end
 
 --- Retorna se a escolha tem uma condição para ser executada.
