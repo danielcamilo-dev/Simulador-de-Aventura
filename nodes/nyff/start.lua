@@ -1,5 +1,3 @@
-os.execute("chcp 65001")
-
 -- Constants
 local ID = "nyff.start"
 

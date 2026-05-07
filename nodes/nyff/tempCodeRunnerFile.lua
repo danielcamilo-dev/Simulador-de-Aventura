@@ -1,5 +1,0 @@
-print(node.title)
-print()
-print(node.header)
-print()
-print(node.description)
