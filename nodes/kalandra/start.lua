@@ -9,11 +9,11 @@ local Choice = require("choice")
 
 local node = Node:new(ID) ---@type Node
 
-node.title = "Praia de Kalandra."
+node.title = "Praia de Kalandra"
 
 node.description = "Está um dia ensolarado, com o sol iluminando toda a praia, mas algo estranho te pertuba, a praia esta vazia, mas ainda com utensilhos de outras pessoas, sua intuição diz que algo está errado."
 
-node.header = [[
+node.header = [[%{yellow}
 _\/_                 |                _\/_
 /o\\             \       /            //o\
  |                 .---.                |

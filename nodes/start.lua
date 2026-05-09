@@ -13,7 +13,7 @@ node.title = "Uma nova aventura"
 
 node.description = "Em uma bela manhã, você acorda com a motivação de explorar em mais uma aventura. Para onde você vai?"
 
-node.header = [[
+node.header = [[%{yellow}
 <=========================================>
    A D V E N T U R E   S I M U L A T O R
 <=========================================>
@@ -25,12 +25,12 @@ node.header = [[
 
 table.insert(node.choices, Choice:new(
     "kalandra.start",
-    "Para a praia ensolarada de Kalandra"
+    "%{yellow}Para a praia ensolarada de Kalandra"
 ))
 
 table.insert(node.choices, Choice:new(
     "nyff.start",
-    "Para as montanhas geladas de Nyff"
+    "%{yellow}Para as montanhas geladas de Nyff"
 ))
 
 -----------------------------------------------------

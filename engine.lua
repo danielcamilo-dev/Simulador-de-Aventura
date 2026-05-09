@@ -1,8 +1,20 @@
 local class = require("libs.middleclass")
+local ansicolorsx = require("libs.ansicolorsx")
 local nodeLoader = require("nodeLoader")
+local utils = require("utils")
 
 ---@class Engine
 local Engine = class("Engine")
+
+--- Funcao para definir print como uma funcao do ansicolorsx para mudar a cor
+---@param ... string
+local function print(...)
+    _G.print(ansicolorsx(...))
+end
+
+local function iowrite(...)
+    io.write(ansicolorsx(...))
+end
 
 function Engine:initialize()
     
@@ -15,8 +27,8 @@ function Engine:runMainLoop()
         local node = game.activeNode
         
         -- Limpar o terminal
-            -- TODO
-        
+        utils.clearTerminal()
+
         -- Printar node
         self:printNode(node)
 
@@ -47,9 +59,9 @@ function Engine:printNode(node)
         print()
         print(node.header)
     end
-    print("===== " .. node.title)
+    print("----- %{white}" .. node.title .. " -----")
     print(node.description)
-    print("=================================================")
+    print("-------------------------------------------------")
 end
 
 ---comment
@@ -65,10 +77,11 @@ function Engine:getValidChoices(node)
     return result
 end
 
+--- Mostra as choices pro usuario
 ---@param choices Choice
 function Engine:showChoices(choices)
     for i, choice in pairs(choices) do
-        print(string.format("%s. %s", i, choice.description))
+        print("%{white}" .. i .. ": %{yellow}" .. choice.description)
     end 
 end
 
@@ -76,7 +89,7 @@ end
 ---@return number
 function Engine:askForInput(amount)
     while true do
-        io.write("> ")
+        iowrite("> ")
 
         local answerString = io.read()
         local answer = tonumber(answerString)
@@ -86,7 +99,7 @@ function Engine:askForInput(amount)
         if isValidAnswer then
             return answer
         else
-            print(" Resposta invalida, tente novamente.")
+            print(("%{red}Resposta invalida, tente novamente."))
         end
     end
 end
