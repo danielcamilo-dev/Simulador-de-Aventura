@@ -13,6 +13,11 @@ utils.enableUTF8()
 nodeLoader.loadNodes()
 GameData.activeNode = nodeLoader.getInitialNode()
 
+if nodeLoader.hasErrors() then
+    print("Found errors in nodeLoader, aborting progam!")
+    os.exit()
+end
+
 -- Start Engine
 local engine = Engine:new() ---@type Engine
 engine:runMainLoop()
