@@ -13,8 +13,9 @@ utils.enableUTF8()
 nodeLoader.loadNodes()
 GameData.activeNode = nodeLoader.getInitialNode()
 
+-- Verifica se tem erros antes de começar.
 if nodeLoader.hasErrors() then
-    print("Found errors in nodeLoader, aborting progam!")
+    print("Found errors on nodeLoader, aborting progam!")
     os.exit()
 end
 

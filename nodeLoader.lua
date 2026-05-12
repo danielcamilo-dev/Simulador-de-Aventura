@@ -2,7 +2,7 @@ local nodeLoader = {}
 
 local nodeDicitionary = {} ---@type table <string, Node>
 local initialNode = nil ---@type Node
-local hasError = false
+local hasError = false ---@type boolean
 
 -------------------------------------------------
 
@@ -67,6 +67,8 @@ function nodeLoader.getInitialNode()
     return initialNode
 end
 
+--- Retorna se tem erros na execução.
+---@return boolean
 function nodeLoader.hasErrors()
     return hasError
 end

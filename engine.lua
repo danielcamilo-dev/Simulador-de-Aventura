@@ -42,6 +42,9 @@ function Engine:runMainLoop()
         local choiceIndex = self:askForInput(#validChoices)
         local choice = validChoices[choiceIndex]
 
+        -- Executar rotina da escolha
+        choice:runRoutine()
+
         -- Avanca para o proximo node
         local destinationId = choice.destination
         local nextStage = nodeLoader.getNode(destinationId)
@@ -49,8 +52,25 @@ function Engine:runMainLoop()
         
         -- game.isOver = true
     end
+end
 
-    -- TODO
+--- Cria um separador caso o node não tenha um
+--- @return string
+local function createSeparator(title)
+    local width = 50
+    local result = "%{white}-----"
+    local length = 5
+
+    if title then
+        result = string.format("%s %%{yellow}%s%%{white} ", result, title:upper())
+        length = length + 2 + title:len()
+    end
+
+    for i = length, width, 1 do
+        result = result .. "-"
+    end
+
+    return result
 end
 
 ---@param node Node
@@ -59,9 +79,9 @@ function Engine:printNode(node)
         print()
         print(node.header)
     end
-    print("----- %{white}" .. node.title .. " -----")
+    print(createSeparator(node.title))
     print(node.description)
-    print("-------------------------------------------------")
+    print(createSeparator())
 end
 
 ---comment
