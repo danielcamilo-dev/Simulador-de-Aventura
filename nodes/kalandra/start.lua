@@ -25,16 +25,6 @@ _|_______     --  /     \  --     ______|__
 -- Create choices
 -- TODO
 
-table.insert(node.choices, Choice:new(
-    "kalandra.start",
-    "Para a praia ensolarada de Kalandra"
-))
-
-table.insert(node.choices, Choice:new(
-    "nyff.start",
-    "Para as montanhas geladas de Nyff"
-))
-
 -----------------------------------------------------
 
 return node

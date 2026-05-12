@@ -47,6 +47,10 @@ function Engine:runMainLoop()
 
         -- Obter escolhas validas
         local validChoices = self:getValidChoices(node)
+        if #validChoices == 0 then
+            print("%{red}Não tem nenhuma escolha valida para o node: " .. node.id)
+            os.exit()
+        end
 
         -- Mostrar escolha valida
         self:showChoices(validChoices)
