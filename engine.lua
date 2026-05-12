@@ -32,6 +32,19 @@ function Engine:runMainLoop()
         -- Printar node
         self:printNode(node)
 
+        -- Processar fim do jogo
+        if node.gameOver then
+            print()
+            print("%{red}===== Game Over =====")
+            print()
+            os.exit()
+        elseif node.gameWon then
+            print()
+            print("%{green}===== Você venceu o jogo! =====")
+            print()
+            os.exit()
+        end
+
         -- Obter escolhas validas
         local validChoices = self:getValidChoices(node)
 
@@ -49,8 +62,6 @@ function Engine:runMainLoop()
         local destinationId = choice.destination
         local nextStage = nodeLoader.getNode(destinationId)
         game.activeNode = nextStage
-        
-        -- game.isOver = true
     end
 end
 
@@ -78,6 +89,10 @@ function Engine:printNode(node)
     if node.header then
         print()
         print(node.header)
+    elseif node.gameOver then
+        print(utils.getHeaderGameOver())
+    elseif node.gameWon then
+        print(utils.getHeaderGameWon())
     end
     print(createSeparator(node.title))
     print(node.description)

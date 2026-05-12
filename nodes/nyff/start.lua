@@ -27,18 +27,11 @@ __/__/_______/___/__\___\__________________________________________________
 
 -----------------------------------------------------
 -- Create choices
--- TODO
 
 table.insert(node.choices, Choice:new(
-    "kalandra.start",
-    "Para a praia ensolarada de Kalandra"
+    "nyff.congelou",
+    "Estava muito gelado."
 ))
 
-table.insert(node.choices, Choice:new(
-    "nyff.start",
-    "Para as montanhas geladas de Nyff"
-))
-
------------------------------------------------------
 
 return node

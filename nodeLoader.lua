@@ -32,6 +32,7 @@ function nodeLoader.loadNodes()
 
     -- Carregar outros nodes
     loadNode("nodes.nyff.start")
+    loadNode("nodes.nyff.congelou")
     loadNode("nodes.kalandra.start")
 
     -- Validate destinations
