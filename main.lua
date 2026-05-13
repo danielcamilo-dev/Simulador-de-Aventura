@@ -4,8 +4,6 @@ local nodeLoader = require("nodeLoader")
 local Engine = require("engine")
 local utils = require("utils")
 
-local Player = require("Player.player")
-_G.player = Player
 local GameData = GameData:new() ---@type gameData
 _G.game = GameData
 

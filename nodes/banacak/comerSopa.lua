@@ -9,7 +9,18 @@ local node = Node:new(ID) ---@type Node
 
 node.title = "Comer sopa"
 node.description = "Você comeu a sopa, parece que não tem mais nada na vila, você vai embora."
-node.showPlayerLife = true
+node.header = [[ 
+%{yellow}
+        
+                  )    )
+               _.(--"("""--.._
+              /, _..-----).._,\
+             |  `'''-----'''`  |
+              \               /
+               '.           .'
+                 '--.....--'
+
+]]
 
 table.insert(node.choices, Choice:new(
     "banacak.procurar",

@@ -52,4 +52,9 @@ function utils.getHeaderGameWon()
     ]]
 end
 
+--- Processa todas as comidas que  o jogador tem e printa
+function utils.haveAFood(food)
+    return food == true
+end
+
 return utils

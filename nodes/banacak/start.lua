@@ -4,7 +4,6 @@ local ID = "banacak.start"
 -- Dependencies
 local Node = require("node")
 local Choice = require("choice")
-local Player = require("Player.player")
 local Sapo = require("Boses.sapo")
 
 -- Create Node
@@ -39,18 +38,18 @@ table.insert(node.choices, Choice:new(
 
 table.insert(node.choices, Choice:new(
     "banacak.sapo",
-    "Tentar matar um sapo mutante.",
-    function ()
-        return player.playerLife >= player.playerMaxLife
-    end,
-    function ()
-        player.playerLife = player.playerLife - sapo.sapoDamege
-    end
+    "Tentar matar um sapo mutante."
 ))
 
 table.insert(node.choices, Choice:new(
     "banacak.procurar",
     "Explorar floresta."
 ))
+
+table.insert(node.choices, Choice:new(
+    "start",
+    "Sair da floresta."
+))
+
 
 return node
