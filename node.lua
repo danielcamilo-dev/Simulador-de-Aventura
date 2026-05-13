@@ -11,6 +11,7 @@ function Node:initialize(id)
     self.choices = {} ---@type Choice[]
     self.gameOver = false ---@type boolean
     self.gameWon = false ---@type boolean
+    self.showPlayerLife = false
 end
 
 return Node

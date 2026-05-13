@@ -12,15 +12,30 @@ local function loadNode(path)
     if node == nil then
         warn(string.format("Falha ao carregar o node %s. O node nao existe", node))
         hasError = true
-        return
+        return nil
     end
     
     if nodeDicitionary[node.id] ~= nil then
         warn(string.format("Falha ao carregar o node %s. O node foi duplicado", node))
         hasError = true
-        return
+        return nil
     end
     nodeDicitionary[node.id] = node
+    return node
+end
+
+---@param parentNode Node
+local function loadNodesFromChoice(parentNode)
+    for _, Choice in pairs(parentNode.choices) do
+        local destinationId = Choice.destination
+
+        if not nodeDicitionary[destinationId] then
+            local childNode = loadNode("nodes." .. destinationId)
+            if childNode then
+                loadNodesFromChoice(childNode)
+            end
+        end
+    end
 end
 
 --- Carrega todos os nodes internamente
@@ -28,12 +43,9 @@ function nodeLoader.loadNodes()
     nodeDicitionary = {}
     initialNode = require("nodes.start")
 
-    nodeDicitionary[initialNode] = initialNode
+    nodeDicitionary[initialNode.id] = initialNode
 
-    -- Carregar outros nodes
-    loadNode("nodes.nyff.start")
-    loadNode("nodes.nyff.congelou")
-    loadNode("nodes.kalandra.start")
+    loadNodesFromChoice(initialNode)
 
     -- Validate destinations
     for id, node in pairs(nodeDicitionary) do
@@ -44,6 +56,7 @@ function nodeLoader.loadNodes()
             if destinationNode == nil then
                 warn(string.format("Uma das escolhas do node %s tem com destino um node existente: %s", node.id, destinationNode))
                 hasError = true
+                return nil
             end
         end
     end

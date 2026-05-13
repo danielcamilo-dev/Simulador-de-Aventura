@@ -62,6 +62,8 @@ function Engine:runMainLoop()
         -- Executar rotina da escolha
         choice:runRoutine()
 
+        -- Verificar se o jogador ainda esta vivo
+
         -- Avanca para o proximo node
         local destinationId = choice.destination
         local nextStage = nodeLoader.getNode(destinationId)
@@ -101,6 +103,11 @@ function Engine:printNode(node)
     print(createSeparator(node.title))
     print(node.description)
     print(createSeparator())
+    print()
+    if node.showPlayerLife then
+        print(string.format("%%{red}❤ Vida: %d/%d", player.playerLife, player.playerMaxLife))
+        print()
+    end
 end
 
 ---comment

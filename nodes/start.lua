@@ -24,13 +24,13 @@ node.header = [[%{yellow}
 -- TODO
 
 table.insert(node.choices, Choice:new(
-    "kalandra.start",
-    "%{yellow}Para a praia ensolarada de Kalandra"
+    "calandra.start",
+    "%{yellow}Para a vila de calandra."
 ))
 
 table.insert(node.choices, Choice:new(
-    "nyff.start",
-    "%{yellow}Para as montanhas geladas de Nyff"
+    "banacak.start",
+    "%{yellow}Para a grande floresta de banacak."
 ))
 
 -----------------------------------------------------
