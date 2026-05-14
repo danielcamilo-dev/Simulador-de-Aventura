@@ -4,6 +4,8 @@ local ID = "calandra.start"
 -- Dependencies
 local Node = require("node")
 local Choice = require("choice")
+local chave = require("nodes.calandra.chave")
+local sopa = require("nodes.banacak.sopa")
 
 -- Create Node
 
@@ -29,7 +31,36 @@ __/_  /   \ ______/ ''   /'\_,__
 
 -----------------------------------------------------
 -- Create choices
--- TODO
+
+table.insert(node.choices, Choice:new(
+    "calandra.doarAoMorador",
+    "Dar a sopa ao um morador de rua que estava sentado ao lado de um bar.",
+    function ()
+        return sopa.temSopa == true
+    end,
+    function ()
+        chave.temChave = true
+        sopa.temSopa = false
+    end
+))
+
+table.insert(node.choices, Choice:new(
+    "start",
+    "Sair de Calandra."
+))
+
+table.insert(node.choices, Choice:new(
+    "calandra.roubarAgricultura",
+    "Colher agricultura sem permissão."
+))
+
+table.insert(node.choices, Choice:new(
+    "calandra.mina",
+    "Entrar em uma mina misteriosa.",
+    function ()
+        return chave.temChave == true
+    end
+))
 
 -----------------------------------------------------
 
